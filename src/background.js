@@ -17,7 +17,7 @@ async function createWindow() {
     tooltip: 'Remote Report',
     index: isDevelopment
             ? process.env.WEBPACK_DEV_SERVER_URL
-            : `file://${__dirname}/index.html`,
+            : 'app://./index.html',
     browserWindow: {
       width: 360,
       height: 360,
