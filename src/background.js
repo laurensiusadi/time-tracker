@@ -40,12 +40,8 @@ async function createWindow() {
   
   mb.on('after-create-window', () => {
     // Load the url of the dev server if in development mode
-    if (process.env.WEBPACK_DEV_SERVER_URL) {
-      mb.window.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
-      if (!process.env.IS_TEST) mb.window.webContents.openDevTools()
-    } else {
-      createProtocol('app')
-      mb.window.loadURL('app://./index.html')
+    if (isDevelopment && !process.env.IS_TEST) {
+      // mb.window.webContents.openDevTools()
     }
   })
 }
@@ -76,6 +72,10 @@ app.on('ready', async () => {
     } catch (e) {
       console.error('Vue Devtools failed to install:', e.toString())
     }
+  }
+
+  if (!process.env.WEBPACK_DEV_SERVER_URL) {
+    createProtocol('app')
   }
 
   createWindow()
