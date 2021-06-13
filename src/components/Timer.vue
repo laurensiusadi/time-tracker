@@ -1,10 +1,15 @@
 <template>
   <div class="flex items-center h-16 border-b border-gray-300">
     <div class="flex-1 ml-4">
-      <input v-model="description" placeholder="Project Name" class="w-full h-16 text-lg font-semibold bg-transparent border-none outline-none"/>
+      <input
+        v-model="description"
+        placeholder="What are you working on?"
+        class="w-full h-16 text-lg bg-transparent border-none outline-none"
+        :class="[ running ? 'font-semibold' : 'font-normal' ]"
+        :disabled="inputDisabled"
+      />
     </div>
-    <div class="mr-2 text-lg font-semibold tabular-nums leading-none text-right select-none"
-      :class="[ running ? 'text-black' : 'text-gray-200' ]">
+    <div v-show="running" class="mr-2 text-lg font-semibold tabular-nums leading-none text-right text-black select-none">
       {{ currentTimer }}
     </div>
     <button class="flex justify-center items-center w-16 h-full hover:bg-gray-50 focus:outline-none" @click="toggleTimer">
@@ -21,28 +26,63 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { dateDiffToString } from '../utils'
 
 export default {
   data() {
     return {
       ticker: null,
-      start: null,
       currentTimer: '00:00:00',
       running: false,
-      description: ''
+      description: null
+    }
+  },
+  computed: {
+    ...mapState(['currentSession', 'selectedProject']),
+    inputDisabled() {
+      return this.currentSession && this.currentSession.id
+    }
+  },
+  watch: {
+    'selectedProject.name'(val) {
+      if (val) {
+        this.description = val
+      }
+    },
+    'currentSession.start'(val) {
+      if (val) {
+        this.running = true
+        this.ticker = setInterval(() => {
+          this.currentTimer = dateDiffToString(new Date(), new Date(this.currentSession.start))
+        }, 1000)
+      }
     }
   },
   methods: {
-    toggleTimer() {
+    async toggleTimer() {
+      if (!this.description) return
       this.running = !this.running
       if (this.running) {
-        this.start = new Date()
-        this.ticker = setInterval(() => {
-          this.currentTimer = dateDiffToString(new Date(), this.start)
-        }, 1000)
+        let valid = false
+        if (this.selectedProject?.id) {
+          this.$store.commit('startSession', this.selectedProject.id)
+          valid = true
+        } else if (this.description) {
+          console.log('startNewProject')
+          await this.$store.dispatch('startNewProject', this.description)
+          valid = true
+        }
+        if (valid && this.currentSession?.start) {
+          this.ticker = setInterval(() => {
+            this.currentTimer = dateDiffToString(new Date(), new Date(this.currentSession.start))
+          }, 1000)
+        }
       } else {
-        this.start = null
+        if (this.currentSession) {
+          this.$store.commit('endSession')
+          this.description = null
+        }
         this.currentTimer = '00:00:00'
         clearInterval(this.ticker)
       }

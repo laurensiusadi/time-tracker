@@ -2,26 +2,21 @@
   <div class="flex flex-col flex-1">
     <timer/>
     <div class="overflow-y-auto flex-1 no-scrollbar">
-      <project v-for="n in 8" :key="n" :project="projects[0]"></project>
+      <project v-for="p in projects" :key="p.id" :project="p"/>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Project from '../components/Project.vue'
 import Timer from '../components/Timer.vue'
 
 export default {
   name: 'Home',
   components: { Timer, Project },
-  data() {
-    return {
-      projects: [
-        {
-          name: 'Project Name'
-        }
-      ]
-    }
+  computed: {
+    ...mapState(['projects'])
   }
 }
 </script>

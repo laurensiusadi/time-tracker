@@ -19,10 +19,10 @@ async function createWindow() {
             ? process.env.WEBPACK_DEV_SERVER_URL
             : 'app://./index.html',
     browserWindow: {
-      width: 360,
-      height: 360,
-      minWidth: 360,
-      minHeight: 360,
+      width: 400,
+      height: 480,
+      minWidth: 400,
+      minHeight: 480,
       resizable: isDevelopment,
       alwaysOnTop: isDevelopment,
       webPreferences: {
