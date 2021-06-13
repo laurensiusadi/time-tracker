@@ -14,7 +14,7 @@ protocol.registerSchemesAsPrivileged([
 
 async function createWindow() {
   const mb = menubar({
-    tooltip: 'Remote Report',
+    tooltip: 'TimeTrack',
     index: isDevelopment
             ? process.env.WEBPACK_DEV_SERVER_URL
             : 'app://./index.html',
