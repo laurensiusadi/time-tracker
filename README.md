@@ -1,38 +1,26 @@
-# remote-report
+# Time Tracker
 
-## Project setup
+Time tracker app built with Electron + Menubar + Vue + Electron Store (persistent local storage)
+
+## Running
+
 ```
 npm install
+npm run electron:serve
+npm run electron:build -- --win nsis
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Features
-- [ ] Client CRUD
-- [ ] Project CRUD
+
+- [x] Project CRUD
+  - [x] create
+  - [x] rename
+  - [ ] delete
+- [x] Sessions CRUD
+  - [x] start/stop
+  - [ ] manual create/edit
 - [ ] Create project report  
   - [ ] Time span (last week, last 2 week, last month)
   - [ ] count hours per day
   - [ ] Hourly rate
   - [ ] PDF export
-- [ ] Sessions CRUD
-  - [ ] start/stop
-  - [ ] auto name with current timestamp
-  - [ ] rename
-  - [ ] manual create
