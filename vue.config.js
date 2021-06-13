@@ -1,7 +1,10 @@
 module.exports = {
   pluginOptions: {
     electronBuilder: {
-    nodeIntegration: true
+      nodeIntegration: true
     }
+  },
+  configureWebpack: {
+    devtool: 'source-map'
   }
 }

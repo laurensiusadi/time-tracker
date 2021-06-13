@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, Tray, BrowserWindow } from 'electron'
+import { app, protocol, Tray, BrowserWindow, Menu } from 'electron'
 import { join } from 'path'
 import { menubar } from 'menubar'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
@@ -35,6 +35,19 @@ async function createWindow() {
 
   mb.on('ready', () => {
     mb.showWindow()
+
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: 'Quit',
+        click: () => {
+          mb.app.quit()
+        }
+      }
+    ])
+
+    mb.tray.on('right-click', () => {
+      mb.tray.popUpContextMenu(contextMenu)
+    })
   })
 
   

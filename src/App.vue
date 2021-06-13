@@ -16,6 +16,4 @@
   </div>
 </template>
 
-<style>
-@import url("./assets/tailwind.css");
-</style>
+<style src="./assets/tailwind.css"></style>
