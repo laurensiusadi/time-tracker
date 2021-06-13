@@ -1,21 +1,17 @@
+const secondsToHhMmSs = (s) => {
+  return new Date(s * 1000).toISOString().substr(11, 8)
+}
+
+const diffToSecond = (a, b) => {
+  return Math.abs(a - b) / 1000
+}
+
 const dateDiffToString = (a, b) => {
-  let diff = Math.abs(a - b)
-
-  const ms = diff % 1000
-  diff = (diff - ms) / 1000
-  const s = diff % 60
-  diff = (diff - s) / 60
-  const m = diff % 60
-  diff = (diff - m) / 60
-  const h = diff
-
-  const ss = s <= 9 && s >= 0 ? `0${s}` : s
-  const mm = m <= 9 && m >= 0 ? `0${m}` : m
-  const hh = h <= 9 && h >= 0 ? `0${h}` : h
-
-  return hh + ':' + mm + ':' + ss
+  return secondsToHhMmSs(diffToSecond(a, b))
 }
 
 export {
+  secondsToHhMmSs,
+  diffToSecond,
   dateDiffToString
 }
