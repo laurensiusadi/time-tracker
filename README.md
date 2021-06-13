@@ -22,3 +22,17 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Features
+- [ ] Client CRUD
+- [ ] Project CRUD
+- [ ] Create project report  
+  - [ ] Time span (last week, last 2 week, last month)
+  - [ ] count hours per day
+  - [ ] Hourly rate
+  - [ ] PDF export
+- [ ] Sessions CRUD
+  - [ ] start/stop
+  - [ ] auto name with current timestamp
+  - [ ] rename
+  - [ ] manual create

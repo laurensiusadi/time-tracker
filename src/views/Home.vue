@@ -1,14 +1,16 @@
 <template>
-  <div class="px-2 pb-4">
-    <h1 class="text-2xl">Hello</h1>
-    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt impedit, a distinctio velit, provident facere magni atque voluptates nam nesciunt. Ipsum, fugiat? Illum cum accusamus ullam minima asperiores quo?</p>
-    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt impedit, a distinctio velit, provident facere magni atque voluptates nam nesciunt. Ipsum, fugiat? Illum cum accusamus ullam minima asperiores quo?</p>
-    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt impedit, a distinctio velit, provident facere magni atque voluptates nam nesciunt. Ipsum, fugiat? Illum cum accusamus ullam minima asperiores quo?</p>
+  <div class="flex-1">
+    <timer/>
+    <session v-for="n in 8" :key="n"></session>
   </div>
 </template>
 
 <script>
+import Session from '../components/Session.vue'
+import Timer from '../components/Timer.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { Timer, Session }
 }
 </script>
