@@ -36,9 +36,10 @@ export default {
     },
     onProjectNameChange(e) {
       if (e.target.value) {
-        this.$store.commit('setProjectName', this.project.id, e.target.value)
+        this.$store.commit('setProjectName', { id: this.project.id, name: e.target.value })
+      } else {
+        e.target.value = this.project.name
       }
-      console.log(e.target.value)
     }
   }
 }

@@ -31,9 +31,13 @@ export default new Vuex.Store({
     selectProject(state, payload) {
       state.selectedProject = state.projects.find(p => p.id === payload)
     },
-    setProjectName(state, id, name) {
+    setProjectName(state, { id, name }) {
       const i = state.projects.findIndex(p => p.id === id)
       Vue.set(state.projects, i, { ...state.projects[i], name })
+      saveStorage(state, 'projects')
+    },
+    deleteProject(state, payload) {
+      state.projects.splice(state.projects.findIndex(p => p.id === payload), 1)
       saveStorage(state, 'projects')
     },
     newProject(state, payload) {
