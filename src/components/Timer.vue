@@ -69,7 +69,6 @@ export default {
           this.$store.commit('startSession', this.selectedProject.id)
           valid = true
         } else if (this.description) {
-          console.log('startNewProject')
           await this.$store.dispatch('startNewProject', this.description)
           valid = true
         }

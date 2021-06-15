@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     start() {
-      console.log('start')
       if (!this.selectedProject && !this.currentSession) {
         this.$store.commit('selectProject', this.project.id)
         this.$store.commit('startSession', this.project.id)

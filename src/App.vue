@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="flex overflow-hidden flex-col h-screen bg-green-100">
     <div id="nav" class="flex items-center h-10">
-      <h1 class="flex-1 ml-3 text-xl font-semibold tracking-tight leading-10 text-green-600">TimeTrack</h1>
-      <button class="px-1 mr-2 h-10 text-xs font-medium tracking-wider text-green-500 uppercase rounded-lg focus:outline-none hover:text-green-700" title="Filter">
+      <h1 class="flex-1 ml-3 text-xl font-bold tracking-tight leading-10 text-green-600">TimeTrack</h1>
+      <button class="px-1 mr-2 h-10 text-green-500 focus:outline-none hover:text-green-700" title="Filter">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6 8C6 7.73478 6.10536 7.48043 6.29289 7.29289C6.48043 7.10536 6.73478 7 7 7H17C17.2652 7 17.5196 7.10536 17.7071 7.29289C17.8946 7.48043 18 7.73478 18 8C18 8.26522 17.8946 8.51957 17.7071 8.70711C17.5196 8.89464 17.2652 9 17 9H7C6.73478 9 6.48043 8.89464 6.29289 8.70711C6.10536 8.51957 6 8.26522 6 8V8Z" class="fill-current"/>
           <path d="M8 12C8 11.7348 8.10536 11.4804 8.29289 11.2929C8.48043 11.1054 8.73478 11 9 11H15C15.2652 11 15.5196 11.1054 15.7071 11.2929C15.8946 11.4804 16 11.7348 16 12C16 12.2652 15.8946 12.5196 15.7071 12.7071C15.5196 12.8946 15.2652 13 15 13H9C8.73478 13 8.48043 12.8946 8.29289 12.7071C8.10536 12.5196 8 12.2652 8 12Z" class="fill-current"/>
